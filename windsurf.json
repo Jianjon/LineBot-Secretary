@@ -1,0 +1,20 @@
+{
+  "name": "linebot-secretary",
+  "description": "LINE Bot 專案管理助手",
+  "framework": "fastapi",
+  "build": {
+    "command": "pip install -r requirements.txt"
+  },
+  "start": {
+    "command": "gunicorn app:app --workers 2 --bind 0.0.0.0:8000"
+  },
+  "environment": {
+    "variables": {
+      "LINE_CHANNEL_ACCESS_TOKEN": "${LINE_CHANNEL_ACCESS_TOKEN}",
+      "LINE_CHANNEL_SECRET": "${LINE_CHANNEL_SECRET}",
+      "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+      "SUPABASE_URL": "${SUPABASE_URL}",
+      "SUPABASE_KEY": "${SUPABASE_KEY}"
+    }
+  }
+}

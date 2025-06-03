@@ -1,0 +1,14 @@
+[build]
+  command = "pip install -r requirements.txt"
+  publish = "."
+
+[dev]
+  command = "gunicorn app:app --workers 2 --bind 0.0.0.0:8000"
+  port = 8000
+
+[context.production.environment]
+  LINE_CHANNEL_ACCESS_TOKEN = "${LINE_CHANNEL_ACCESS_TOKEN}"
+  LINE_CHANNEL_SECRET = "${LINE_CHANNEL_SECRET}"
+  OPENAI_API_KEY = "${OPENAI_API_KEY}"
+  SUPABASE_URL = "${SUPABASE_URL}"
+  SUPABASE_KEY = "${SUPABASE_KEY}"

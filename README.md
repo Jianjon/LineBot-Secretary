@@ -3,7 +3,6 @@
 這是一個基於 LINE Bot 的專案管理助手，使用 OpenAI GPT-4 提供智能對話和任務管理功能。
 
 ## 功能特點
-
 - 智能任務管理
 - 自動週報生成
 - 任務到期提醒
@@ -12,7 +11,6 @@
 - 個人化設定
 
 ## 系統需求
-
 - Python 3.8+
 - LINE Bot 帳號
 - OpenAI API 金鑰
@@ -20,20 +18,20 @@
 
 ## 安裝步驟
 
-1. 克隆專案：
+### 克隆專案
 ```bash
 git clone [專案網址]
 cd [專案目錄]
 ```
 
-2. 安裝依賴：
+### 安裝依賴
 ```bash
 pip install -r requirements.txt
 ```
 
-3. 設定環境變數：
-```bash
-# .env
+### 設定環境變數
+在專案根目錄建立 `.env` 檔案：
+```env
 LINE_CHANNEL_ACCESS_TOKEN=你的LINE頻道存取權杖
 LINE_CHANNEL_SECRET=你的LINE頻道密鑰
 OPENAI_API_KEY=你的OpenAI API金鑰
@@ -41,7 +39,7 @@ SUPABASE_URL=你的Supabase URL
 SUPABASE_KEY=你的Supabase金鑰
 ```
 
-4. 啟動服務：
+### 啟動服務
 ```bash
 python app.py
 ```
@@ -61,7 +59,6 @@ python app.py
 - 更新狀態：「將任務A標記為已完成」
 
 ## 專案結構
-
 ```
 .
 ├── app.py              # 主程式
@@ -85,5 +82,10 @@ python app.py
 - 使用 HTTPS 進行通訊
 - 實作 LINE 簽名驗證
 
-## 授權
-MIT License 
+## 注意事項
+- 請確保所有 API 金鑰都已正確設定
+- 建議使用 virtualenv 進行開發
+- 建議將 `.env` 檔案加入 `.gitignore`
+
+## 貢獻
+歡迎提議和貢獻！
