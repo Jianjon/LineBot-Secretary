@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from app.services.database_service import get_weekly_tasks, get_user_tasks
 from app.services.openai_service import generate_task_summary
 from app.services.line_service import send_broadcast_message
+import asyncio
 import os
 
 scheduler = BackgroundScheduler()
@@ -37,7 +38,7 @@ def send_daily_summary(line_bot_api):
     try:
         # 獲取昨天的任務
         yesterday = datetime.now() - timedelta(days=1)
-        tasks = get_user_tasks(created_after=yesterday.isoformat())
+        tasks = asyncio.run(get_user_tasks(created_after=yesterday.isoformat()))
         
         if tasks:
             summary = generate_task_summary(tasks)
@@ -57,7 +58,7 @@ def send_weekly_report(line_bot_api):
     發送週報
     """
     try:
-        tasks = get_weekly_tasks()
+        tasks = asyncio.run(get_weekly_tasks())
         if tasks:
             summary = generate_task_summary(tasks)
             # 發送給所有部門主管

@@ -1,4 +1,5 @@
 from openai import OpenAI
+import json
 import os
 from typing import Optional, Dict, Any
 
@@ -34,7 +35,11 @@ def analyze_message(message: str) -> Optional[Dict[str, Any]]:
         )
         
         result = response.choices[0].message.function_call.arguments
-        return eval(result) if result else None
+        return json.loads(result) if result else None
+
+    except json.JSONDecodeError as e:
+        print(f"Error decoding function call arguments: {e}")
+        return None
         
     except Exception as e:
         print(f"Error analyzing message: {e}")
